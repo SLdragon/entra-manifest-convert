@@ -2,6 +2,10 @@
 
 A CLI tool to convert Microsoft Entra app manifests from Azure AD Graph format to Azure AD Graph format. For more information about the format, please check this [link](https://learn.microsoft.com/en-us/entra/identity-platform/azure-active-directory-graph-app-manifest-deprecation)
 
+## NPM Package
+
+The package is available on npm: [entra-manifest-convert](https://www.npmjs.com/package/entra-manifest-convert).
+
 ## Installation
 
 ```sh
