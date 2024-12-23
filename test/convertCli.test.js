@@ -54,4 +54,25 @@ describe('convert.cli.js', () => {
     expect(result.status).to.equal(0);
     expect(fs.existsSync(outputPath)).to.be.true;
   });
+
+  it('should allow specifying the number of spaces for JSON formatting', () => {
+    const outputPath = path.join(__dirname, 'test-resources', 'aad.manifest.spaces.json');
+    // Clean up if exists
+    if (fs.existsSync(outputPath)) fs.removeSync(outputPath);
+
+    const result = spawnSync('node', [
+      '../convert.cli.js',
+      testManifest,
+      '--out',
+      outputPath,
+      '--spaces',
+      '4'
+    ], { cwd: __dirname });
+
+    expect(result.status).to.equal(0);
+    expect(fs.existsSync(outputPath)).to.be.true;
+
+    const content = fs.readFileSync(outputPath, 'utf8');
+    expect(content.split('\n')[1]).to.equal('    "id": "${{AAD_APP_OBJECT_ID}}",'); // Check for 4 spaces
+  });
 });

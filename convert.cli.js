@@ -74,7 +74,7 @@ async function manifestToApplication(manifest) {
   return result;
 }
 
-async function convertManifest(manifestPath, outPath) {
+async function convertManifest(manifestPath, outPath, spaces) {
   if (!(await fs.pathExists(manifestPath))) {
     console.error(`File not found: ${manifestPath}`);
     process.exit(1);
@@ -82,20 +82,30 @@ async function convertManifest(manifestPath, outPath) {
 
   const manifest = await fs.readJson(manifestPath);
   const application = await manifestToApplication(manifest);
-  await fs.writeJson(outPath, application, { spaces: 2 });
+  await fs.writeJson(outPath, application, { spaces });
   console.log(`Successfully converted and saved: ${outPath}`);
 }
 
 (async () => {
   const args = process.argv.slice(2);
   if (args.length < 1) {
-    console.error("Usage: convert <path-to-manifest> [--out <output-file>]");
+    console.error("Usage: convert <path-to-manifest> [--out <output-file>] [--spaces <number-of-spaces>]");
     process.exit(1);
   }
   const manifestPath = path.resolve(args[0]);
   let outPath = manifestPath;
-  if (args[1] === '--out' && args[2]) {
-    outPath = path.resolve(args[2]);
+  let spaces = 2;
+  if (args.includes('--out')) {
+    const outIndex = args.indexOf('--out');
+    if (args[outIndex + 1]) {
+      outPath = path.resolve(args[outIndex + 1]);
+    }
   }
-  await convertManifest(manifestPath, outPath);
+  if (args.includes('--spaces')) {
+    const spacesIndex = args.indexOf('--spaces');
+    if (args[spacesIndex + 1]) {
+      spaces = parseInt(args[spacesIndex + 1], 10);
+    }
+  }
+  await convertManifest(manifestPath, outPath, spaces);
 })();

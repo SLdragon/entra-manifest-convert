@@ -11,10 +11,10 @@ npm install -g entra-manifest-convert
 ## Usage
 
 ```sh
-entra-manifest-convert <path-to-manifest> [--out <output-file>]
+entra-manifest-convert <path-to-manifest> [--out <output-file>] [--spaces <number-of-spaces>]
 ```
 
-You can optionally specify an output file using the --out parameter.
+You can optionally specify an output file using the --out parameter and the number of spaces for JSON formatting using the --spaces parameter.
 
 ## Running Tests
 

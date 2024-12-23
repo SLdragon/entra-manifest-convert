@@ -1,6 +1,6 @@
 {
   "name": "entra-manifest-convert",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A CLI tool to convert Microsoft Entra Azure AD manifest files to Graph format",
   "main": "convert.cli.js",
   "type": "module",
