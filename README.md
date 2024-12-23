@@ -21,3 +21,7 @@ You can optionally specify an output file using the --out parameter and the numb
 ```sh
 npm test
 ```
+
+## Repository
+
+For more information, visit the [GitHub repository](https://github.com/SLdragon/entra-manifest-convert).

@@ -1,6 +1,6 @@
 {
   "name": "entra-manifest-convert",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A CLI tool to convert Microsoft Entra Azure AD manifest files to Graph format",
   "main": "convert.cli.js",
   "type": "module",
@@ -13,6 +13,16 @@
   },
   "author": "",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SLdragon/entra-manifest-convert"
+  },
+  "files": [
+    "convert.cli.js",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
   "dependencies": {
     "fs-extra": "^10.0.0"
   },
